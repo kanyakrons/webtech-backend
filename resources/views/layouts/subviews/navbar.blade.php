@@ -43,6 +43,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('artists.index') }}"
+                       class="nav-menu {{ Route::currentRouteName() === 'artists.index' ? 'active' : '' }}">
+                        Artist
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('about.index') }}"
                        class="nav-menu {{ Route::currentRouteName() === 'about.index' ? 'active' : '' }}">
                         About
