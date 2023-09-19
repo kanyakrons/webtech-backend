@@ -9,8 +9,31 @@
                 <span></span>
             </div>
 
-            <a href="#"
-               class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none">Download</a>
+            <div class="flex items-center">
+                @if (Auth::check())
+                    <div class="mx-4">
+                    {{ Auth::user()->name }}
+                    </div>
+                    <div>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">
+                                Logout
+                            </button>
+                    </div>
+                @else
+                    <div class="mx-4">
+                        <a href="{{ route('login') }}">
+                            Login
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{ route('register') }}">
+                            Register
+                        </a>
+                    </div>
+                @endif
+            </div>
 
             <button data-collapse-toggle="mobile-menu-2" type="button"
                     class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -39,7 +62,7 @@
                 <li>
                     <a href="{{ route('songs.index') }}"
                        class="nav-menu {{ Route::currentRouteName() === 'songs.index' ? 'active' : '' }}">
-                        Song Playlist
+                        Song List
                     </a>
                 </li>
                 <li>
@@ -53,6 +76,11 @@
                        class="nav-menu {{ Route::currentRouteName() === 'about.index' ? 'active' : '' }}">
                         About
                     </a>
+                </li>
+                <li>
+                    <a href="{{ route('playlists.index') }}"
+                        class="nav-menu {{ Route::currentRouteName() === 'playlists.index' ? 'active' : '' }}">
+                        My Playlist
                 </li>
             </ul>
         </div>

@@ -23,7 +23,7 @@ class PlaylistSeeder extends Seeder
 
         $playlist = new Playlist();
         $playlist->name = "second playlist";
-        $playlist->user_id = 2;
+        $playlist->user_id = 1;
         $playlist->accessibility = "PRIVATE";
         $playlist->save();
         $playlist->songs()->sync([98, 4, 7]);

@@ -13,17 +13,28 @@
 
                 <div class="mb-5">
                     <label for="title" class="block mb-2 font-bold text-gray-600">Song Title</label>
-                    <input required type="text" id="title" name="title" autocomplete="off"
-                           placeholder="Put in song title" 
-													 class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    @error('title')
+                        <div class="text-red-600 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    <input type="text" id="title" name="title" autocomplete="off"
+                            value="{{ old('title', '')}}"
+                           placeholder="Put in song title"
+						    class="border border-gray-300 @error('title') border-red-400 @enderror shadow p-3 w-full rounded mb-">
                 </div>
 
                 <div class="mb-5">
                     <label for="duration" class="block mb-2 font-bold text-gray-600">Song Duration</label>
+                    @error('duration')
+                        <div class="text-red-600 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <input type="number" id="duration" name="duration" autocomplete="off"
-                           min="1" required
-                           placeholder="Put in song duration in seconds" 
-													 class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                           value="{{ old('duration', '')}}"
+                           placeholder="Put in song duration in seconds"
+                           class="border border-gray-300 @error('duration') border-red-400 @enderror shadow p-3 w-full rounded mb-">
                 </div>
 
                 <button type="submit" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
